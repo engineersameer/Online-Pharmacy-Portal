@@ -1,0 +1,49 @@
+# --- Node & JavaScript ---
+# Dependency directories
+node_modules/
+**/node_modules/
+
+# Build output / compiled assets
+build/
+dist/
+server/dist/
+coverage/
+
+# Vite / Next / Parcel / Webpack caches
+.vite/
+.next/
+.parcel-cache/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Environment variables / secrets
+.env
+.env.*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor & tooling folders
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Others
+*.local
