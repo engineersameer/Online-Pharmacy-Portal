@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { signupCustomer, signinCustomer, getCustomerProfile } = require('../controllers/authController');
-const { protect } = require('../middleware/authMiddleware');
+const { verifyToken } = require('../middleware/authMiddleware');
 
 // Test route
 router.get('/test', (req, res) => {
@@ -14,6 +14,6 @@ router.post('/signup', signupCustomer);
 router.post('/signin', signinCustomer);
 
 // Protected routes
-router.get('/profile', protect, getCustomerProfile);
+router.get('/profile', verifyToken, getCustomerProfile);
 
 module.exports = router; 

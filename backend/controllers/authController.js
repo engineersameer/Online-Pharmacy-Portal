@@ -2,11 +2,11 @@ const Customer = require('../models/Customer');
 const jwt = require('jsonwebtoken');
 
 // Helper function to generate JWT token
-const generateToken = (id) => {
+const generateToken = (id, role = 'customer') => {
   if (!process.env.JWT_SECRET) {
     throw new Error('JWT_SECRET is not defined in environment variables');
   }
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
+  return jwt.sign({ id, role }, process.env.JWT_SECRET, {
     expiresIn: '30d'
   });
 };
@@ -175,7 +175,7 @@ exports.signinCustomer = async (req, res) => {
 // @access  Private
 exports.getCustomerProfile = async (req, res) => {
   try {
-    const customer = await Customer.findById(req.customer.id);
+    const customer = await Customer.findById(req.user.id);
     if (!customer) {
       return res.status(404).json({
         success: false,

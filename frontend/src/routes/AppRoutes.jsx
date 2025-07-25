@@ -4,11 +4,11 @@ import Welcome from '../pages/Welcome';
 import SignIn from '../pages/auth/SignIn';
 import SignUp from '../pages/auth/Signup';
 import ForgotPassword from '../pages/auth/ForgotPassword';
+import CustomerHome from '../pages/customer/Home';
+import Orders from '../pages/customer/Orders';
+import Profile from '../pages/customer/Profile';
 
 // Placeholder components for other routes
-const CustomerHome = () => <div className="p-4">Customer Home</div>;
-const CustomerOrders = () => <div className="p-4">Customer Orders</div>;
-const CustomerProfile = () => <div className="p-4">Customer Profile</div>;
 const AdminDashboard = () => <div className="p-4">Admin Dashboard</div>;
 const AdminManageOrders = () => <div className="p-4">Manage Orders</div>;
 const AdminUsers = () => <div className="p-4">Manage Users</div>;
@@ -25,8 +25,8 @@ function AppRoutes() {
       {/* Customer routes */}
       <Route path="/customer">
         <Route index element={<MainLayout><CustomerHome /></MainLayout>} />
-        <Route path="orders" element={<MainLayout><CustomerOrders /></MainLayout>} />
-        <Route path="profile" element={<MainLayout><CustomerProfile /></MainLayout>} />
+        <Route path="orders" element={<MainLayout><Orders /></MainLayout>} />
+        <Route path="profile" element={<MainLayout><Profile /></MainLayout>} />
       </Route>
 
       {/* Admin routes */}

@@ -1,12 +1,17 @@
 import { useTheme } from '../contexts/ThemeContext';
-import Header from '../components/Header';
+import WelcomeHeader from '../components/WelcomeHeader';
+import CustomerHeader from '../components/CustomerHeader';
+import { useLocation } from 'react-router-dom';
 
 function MainLayout({ children }) {
   const { isDarkMode } = useTheme();
+  const location = useLocation();
+
+  const isCustomer = location.pathname.startsWith('/customer');
 
   return (
     <div className={`min-h-screen flex flex-col ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
-      <Header />
+      {isCustomer ? <CustomerHeader /> : <WelcomeHeader />}
 
       {/* Main content */}
       <main className="flex-grow">

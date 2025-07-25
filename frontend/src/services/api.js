@@ -1,8 +1,11 @@
 import axios from 'axios';
 
+// API URL configuration
+export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
+
 // Create axios instance with default config
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5001/api',
+  baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -42,7 +45,7 @@ export const auth = {
   forgotPassword: (email) => api.post('/auth/forgot-password', { email }),
   resetPassword: (token, newPassword) => api.post('/auth/reset-password', { token, newPassword }),
 };
-
+  
 // User endpoints
 export const users = {
   getProfile: () => api.get('/users/profile'),

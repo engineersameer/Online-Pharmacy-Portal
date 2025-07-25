@@ -103,6 +103,26 @@ function Signup() {
 
   return (
     <div className={`min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
+      {/* Back Button */}
+      <Link
+        to="/"
+        className={`absolute top-4 left-4 p-2 flex items-center space-x-2 rounded-lg transition-all duration-200 group ${
+          isDarkMode 
+            ? 'text-gray-400 hover:text-white hover:bg-gray-800' 
+            : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200'
+        }`}
+      >
+        <svg 
+          className="w-5 h-5 transform transition-transform group-hover:-translate-x-1" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span className="text-sm font-medium">Back to Home</span>
+      </Link>
+
       <div className="max-w-md w-full space-y-8">
         {/* Header */}
         <div>

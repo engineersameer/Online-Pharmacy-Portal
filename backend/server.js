@@ -3,9 +3,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
+const path = require('path');
 
 // Import routes
 const authRoutes = require('./routes/authRoutes');
+const orderRoutes = require('./routes/orderRoutes');
+const customerRoutes = require('./routes/customerRoutes');
 
 // Create Express app
 const app = express();
@@ -16,6 +19,9 @@ app.use(cors({
   origin: 'http://localhost:5173', // Allow frontend origin
   credentials: true
 }));
+
+// Serve uploaded files statically
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Enhanced request logging
 app.use((req, res, next) => {
@@ -54,6 +60,8 @@ app.get('/api/test', (req, res) => {
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/order', orderRoutes);
+app.use('/api/customers', customerRoutes);
 
 // 404 handler
 app.use((req, res) => {

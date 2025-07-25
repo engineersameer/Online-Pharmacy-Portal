@@ -195,10 +195,15 @@ export const signin = async (credentials) => {
     const response = await api.post('/signin', credentials);
     console.log('Signin response:', response.data);
 
-    if (response.data.success) {
+    if (response.data.success && response.data.data) {
+      const userData = {
+        ...response.data.data,
+        role: response.data.data.role || 'customer' // default to customer if not specified
+      };
+
       // Store token in localStorage
-      localStorage.setItem('token', response.data.data.token);
-      localStorage.setItem('user', JSON.stringify(response.data.data));
+      localStorage.setItem('token', userData.token);
+      localStorage.setItem('user', JSON.stringify(userData));
     }
 
     return response.data;
