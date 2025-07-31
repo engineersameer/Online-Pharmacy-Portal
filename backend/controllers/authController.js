@@ -54,7 +54,8 @@ exports.signupCustomer = async (req, res) => {
       phone,
       address,
       city,
-      password
+      password,
+      IsAdmin: false
     });
 
     console.log('Customer created successfully:', {

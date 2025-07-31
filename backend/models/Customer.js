@@ -46,6 +46,10 @@ const customerSchema = new mongoose.Schema({
     minlength: [8, 'Password must be at least 8 characters long'],
     select: false // Don't include password in query results by default
   },
+  IsAdmin: {
+    type: Boolean,
+    default: false
+  },
   createdAt: {
     type: Date,
     default: Date.now
