@@ -2,8 +2,9 @@ import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
 
+// Update baseURL to match new backend route
 const orderApi = axios.create({
-  baseURL: `${API_URL}/order`,
+  baseURL: `${API_URL}/customers/order`,
 });
 
 orderApi.interceptors.request.use((config) => {
@@ -16,6 +17,7 @@ orderApi.interceptors.request.use((config) => {
 
 export const placeOrder = async (formData) => {
   try {
+    // POST /api/customers/order
     const response = await orderApi.post('/', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -23,7 +25,6 @@ export const placeOrder = async (formData) => {
     });
     return response.data;
   } catch (error) {
-    // Normalize error message
     throw new Error(
       error.response?.data?.message || error.message || 'Failed to place order'
     );
@@ -33,6 +34,7 @@ export const placeOrder = async (formData) => {
 // Get all orders for a customer
 export const getCustomerOrders = async (userId) => {
   try {
+    // GET /api/customers/order/customer/:userId
     const response = await orderApi.get(`/customer/${userId}`);
     return response.data;
   } catch (error) {
@@ -45,6 +47,7 @@ export const getCustomerOrders = async (userId) => {
 // Update a pending order
 export const updateOrder = async (orderId, orderData) => {
   try {
+    // PUT /api/customers/order/:orderId
     const response = await orderApi.put(`/${orderId}`, orderData);
     return response.data;
   } catch (error) {
@@ -57,6 +60,7 @@ export const updateOrder = async (orderId, orderData) => {
 // Delete a pending order
 export const deleteOrder = async (orderId) => {
   try {
+    // DELETE /api/customers/order/:orderId
     const response = await orderApi.delete(`/${orderId}`);
     return response.data;
   } catch (error) {
