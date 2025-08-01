@@ -1,6 +1,7 @@
 import { useTheme } from '../contexts/ThemeContext';
 import WelcomeHeader from '../components/WelcomeHeader';
 import CustomerHeader from '../components/CustomerHeader';
+import AdminHeader from '../components/AdminHeader';
 import { useLocation } from 'react-router-dom';
 
 function MainLayout({ children }) {
@@ -8,10 +9,11 @@ function MainLayout({ children }) {
   const location = useLocation();
 
   const isCustomer = location.pathname.startsWith('/customer');
+  const isAdmin = location.pathname.startsWith('/admin');
 
   return (
     <div className={`min-h-screen flex flex-col ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
-      {isCustomer ? <CustomerHeader /> : <WelcomeHeader />}
+      {isAdmin ? <AdminHeader /> : isCustomer ? <CustomerHeader /> : <WelcomeHeader />}
 
       {/* Main content */}
       <main className="flex-grow">

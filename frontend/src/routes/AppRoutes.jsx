@@ -7,6 +7,9 @@ import ForgotPassword from '../pages/auth/ForgotPassword';
 import CustomerHome from '../pages/customer/Home';
 import Orders from '../pages/customer/Orders';
 import Profile from '../pages/customer/Profile';
+import AdminHome from '../pages/Admin/Home';
+import AdminCustomers from '../pages/Admin/Customers';
+import AdminProfile from '../pages/Admin/Profile';
 
 // Placeholder components for other routes
 const AdminDashboard = () => <div className="p-4">Admin Dashboard</div>;
@@ -31,9 +34,10 @@ function AppRoutes() {
 
       {/* Admin routes */}
       <Route path="/admin">
-        <Route index element={<MainLayout><AdminDashboard /></MainLayout>} />
-        <Route path="orders" element={<MainLayout><AdminManageOrders /></MainLayout>} />
-        <Route path="users" element={<MainLayout><AdminUsers /></MainLayout>} />
+        <Route index element={<MainLayout><AdminHome /></MainLayout>} />
+        <Route path="home" element={<MainLayout><AdminHome /></MainLayout>} />
+        <Route path="customers" element={<MainLayout><AdminCustomers /></MainLayout>} />
+        <Route path="profile" element={<MainLayout><AdminProfile /></MainLayout>} />
       </Route>
     </Routes>
   );
