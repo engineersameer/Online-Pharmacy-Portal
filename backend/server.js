@@ -8,6 +8,7 @@ const path = require('path');
 // Import routes
 const authRoutes = require('./routes/authRoutes');
 const CustomerRouter = require('./routes/CustomerRouter');
+const AdminRoute = require('./routes/AdminRoute');
 
 // Create Express app
 const app = express();
@@ -60,6 +61,7 @@ app.get('/api/test', (req, res) => {
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/customers', CustomerRouter);
+app.use('/api/admin', AdminRoute);
 
 // 404 handler
 app.use((req, res) => {

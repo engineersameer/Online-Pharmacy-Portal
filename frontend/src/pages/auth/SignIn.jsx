@@ -45,7 +45,7 @@ function SignIn() {
       const userRole = user?.role;
 
       // Redirect based on role
-      const redirectPath = userRole === 'customer' ? '/customer' : '/';
+      const redirectPath = userRole === 'admin' ? '/admin/home' : userRole === 'customer' ? '/customer' : '/';
       setTimeout(() => navigate(redirectPath), 800);
     } catch (error) {
       console.error('❌ Signin error:', error);

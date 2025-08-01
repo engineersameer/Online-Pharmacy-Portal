@@ -149,8 +149,10 @@ exports.signinCustomer = async (req, res) => {
       });
     }
 
-    // Generate token
-    const token = generateToken(customer._id);
+    // Set role for JWT and response
+    const role = customer.IsAdmin ? 'admin' : 'customer';
+    // Generate token with role
+    const token = generateToken(customer._id, role);
 
     res.json({
       success: true,
@@ -159,6 +161,8 @@ exports.signinCustomer = async (req, res) => {
         _id: customer._id,
         name: customer.name,
         phone: customer.phone,
+        IsAdmin: customer.IsAdmin,
+        role,
         token
       }
     });
@@ -205,3 +209,8 @@ exports.getCustomerProfile = async (req, res) => {
     });
   }
 }; 
+
+
+//Please resole this problem after understanding the issue.
+
+//You need to do just a simple task, On sign In page when credentials are added in fields, just check the field in the DB id entered credentials are their with the IsAdmin True Fields then redirect the user to the Home page of admin
