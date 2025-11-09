@@ -8,8 +8,8 @@ const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/pharmacy';
 async function seedAdmin() {
   await mongoose.connect(MONGO_URI);
 
-  const adminPhone = '03090827682'; // Set your admin phone number here
-  const adminPassword = 'admin@123'; // Set your admin password here
+  const adminPhone = '03333333333'; // Set your admin phone number here
+  const adminPassword = 'Admin@123'; // Set your admin password here
 
   // Check if admin already exists
   const existingAdmin = await Customer.findOne({ phone: adminPhone, IsAdmin: true });

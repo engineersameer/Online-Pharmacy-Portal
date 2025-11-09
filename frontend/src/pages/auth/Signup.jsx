@@ -102,11 +102,11 @@ function Signup() {
   };
 
   return (
-    <div className={`min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
+    <div className={`min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
       {/* Back Button */}
       <Link
         to="/"
-        className={`absolute top-4 left-4 p-2 flex items-center space-x-2 rounded-lg transition-all duration-200 group ${
+        className={`fixed top-6 left-6 z-50 p-2 flex items-center space-x-2 rounded-lg transition-all duration-200 group ${
           isDarkMode 
             ? 'text-gray-400 hover:text-white hover:bg-gray-800' 
             : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200'
