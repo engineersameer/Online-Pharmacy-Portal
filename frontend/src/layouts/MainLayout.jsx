@@ -16,7 +16,7 @@ function MainLayout({ children }) {
       {isAdmin ? <AdminHeader /> : isCustomer ? <CustomerHeader /> : <WelcomeHeader />}
 
       {/* Main content */}
-      <main className="flex-grow">
+      <main className="flex-grow pt-20">
         {children}
       </main>
 

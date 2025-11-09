@@ -31,14 +31,14 @@ function AdminHeader() {
   );
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 overflow-x-hidden ${
+    <header className={`fixed top-0 w-full z-50 transition-all duration-300 overflow-x-hidden ${
       isScrolled
         ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-md'
         : 'bg-transparent'
     }`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <nav className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-center h-16 max-w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+        <nav>
+          <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <Link to="/admin/home" className="flex items-center space-x-2">
               <svg
