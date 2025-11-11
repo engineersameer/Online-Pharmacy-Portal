@@ -11,6 +11,7 @@ function FormInput({
   placeholder,
   className = '',
   showPasswordToggle = false,
+  disabled = false,
 }) {
   const [isFocused, setIsFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -41,6 +42,7 @@ function FormInput({
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           placeholder={placeholder}
+          disabled={disabled}
           className={`
             block w-full px-4 py-3 rounded-lg
             border-2 transition-all duration-200
@@ -51,6 +53,7 @@ function FormInput({
             }
             ${isFocused ? 'shadow-sm' : ''}
             dark:bg-gray-800 dark:text-white
+            ${disabled ? 'bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400 cursor-not-allowed opacity-75' : ''}
           `}
         />
 

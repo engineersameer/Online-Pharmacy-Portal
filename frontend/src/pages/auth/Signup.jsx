@@ -108,8 +108,8 @@ function Signup() {
         to="/"
         className={`fixed top-6 left-6 z-50 p-2 flex items-center space-x-2 rounded-lg transition-all duration-200 group ${
           isDarkMode 
-            ? 'text-gray-400 hover:text-white hover:bg-gray-800' 
-            : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200'
+            ? 'text-gray-400 hover:text-white hover:bg-gray-800/70' 
+            : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
         }`}
       >
         <svg 
@@ -123,26 +123,29 @@ function Signup() {
         <span className="text-sm font-medium">Back to Home</span>
       </Link>
 
-      <div className="max-w-md w-full space-y-8">
-        {/* Header */}
-        <div>
-          <Link to="/" className="flex justify-center items-center mb-6">
-            <span className="ml-2 text-2xl font-bold text-primary-600">PharmaCare</span>
-          </Link>
-          <h2 className={`text-center text-3xl font-extrabold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Create your account</h2>
-          <p className={`mt-2 text-center text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            Already have an account?{' '}
-            <Link to="/signin" className="font-medium text-primary-600 hover:text-primary-500">Sign in</Link>
-          </p>
-        </div>
+      <div className="max-w-md w-full">
+        <div className={`rounded-2xl border p-6 sm:p-8 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl ${
+          isDarkMode ? 'bg-gray-900/80 border-gray-700 hover:border-primary-700' : 'bg-white border-gray-200 hover:border-primary-300'
+        }`}>
+          {/* Header */}
+          <div className="space-y-2">
+            <Link to="/" className="flex justify-center items-center mb-4">
+              <span className="ml-2 text-2xl font-bold text-primary-600">PharmaCare</span>
+            </Link>
+            <h2 className={`text-center text-3xl font-extrabold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Create your account</h2>
+            <p className={`mt-1 text-center text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+              Already have an account?{' '}
+              <Link to="/signin" className="font-medium text-primary-600 hover:text-primary-500">Sign in</Link>
+            </p>
+          </div>
 
-        {/* API / Validation message */}
-        {apiMessage && (
-          <div className="text-center text-sm text-red-600 dark:text-red-400">{apiMessage}</div>
-        )}
+          {/* API / Validation message */}
+          {apiMessage && (
+            <div className="mt-4 text-center text-sm text-red-600 dark:text-red-400">{apiMessage}</div>
+          )}
 
-        {/* Form */}
-        <form className="space-y-4" onSubmit={handleSubmit}>
+          {/* Form */}
+          <form className="space-y-4 mt-6" onSubmit={handleSubmit}>
           <FormInput label="Name" name="name" value={formData.name} onChange={handleChange} error={errors.name} required placeholder="Full Name" />
 
           <FormSelect label="Age" name="age" value={formData.age} onChange={handleChange} options={AGE_OPTIONS} error={errors.age} required placeholder="Select Age" />
@@ -181,8 +184,9 @@ function Signup() {
           </div>
 
           {/* Submit */}
-          <button type="submit" disabled={isLoading} className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors ${isLoading ? 'opacity-75 cursor-not-allowed' : ''}`}>{isLoading ? 'Signing up…' : 'Sign Up'}</button>
-        </form>
+          <button type="submit" disabled={isLoading} className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition ${isLoading ? 'opacity-75 cursor-not-allowed' : ''}`}>{isLoading ? 'Signing up…' : 'Sign Up'}</button>
+          </form>
+        </div>
       </div>
     </div>
   );
