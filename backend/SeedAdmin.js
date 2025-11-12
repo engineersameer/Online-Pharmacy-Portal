@@ -23,7 +23,7 @@ async function seedAdmin() {
 
   // Create admin user with all required fields
   const admin = new Customer({
-    name: 'Admin', // at least 2 chars
+    name: 'Admin', // at least 2 cha
     age: 30, // between 18 and 100
     gender: 'male', // must be 'male' or 'female'
     phone: adminPhone,
